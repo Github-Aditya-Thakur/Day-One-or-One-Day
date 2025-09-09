@@ -1,0 +1,44 @@
+Pattern:
+-------------------
+using Two pointers, to check initial current node value to the next correspond, then if found equivalent then only update the current.next = current.next.next.
+
+Test cases:
+------------------
+
+1 -> 1 -> 2
+    =>
+1 -> 2
+
+
+Code :
+------------------
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode current = head;
+        
+
+        while(current != null && current.next != null){
+            if(current.val == current.next.val){
+                current.next = current.next.next;
+                
+            }
+            else{
+                current = current.next;
+                
+            }
+
+        }
+        return head;
+        
+    }
+}
