@@ -1,0 +1,33 @@
+Pattern : 
+--------------------------------------------
+binary search 
+
+Mistake :
+-------------------------------------------
+No need of int to ascii conversion 
+Remember to use only while (not for loop)
+and pos1 = mid-1 and pos2 = mid+1 
+
+Test Cases:
+-------------------------------------------
+letters = ["c","f","j"] target = "a"  | output = "a"
+
+letters = ["c","f","j"] target = "a"  | output = "f"
+
+code :
+-------------------------------------------
+class Solution {
+    public char nextGreatestLetter(char[] letters, char target) {
+        int pos1 = 0;
+        int pos2 = letters.length - 1;
+        while (pos1 <= pos2) {
+            int mid = (pos1 + pos2) / 2;
+            if (letters[mid] > target) {
+                pos2 = mid - 1;
+            } else {
+                pos1 = mid + 1;
+            }
+        }
+        return letters[pos1 % letters.length];
+    }
+}
